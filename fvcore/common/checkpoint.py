@@ -251,7 +251,7 @@ class Checkpointer:
         """
         with self.path_manager.open(f, "rb") as file:
             # pyre-fixme[22]: The cast is redundant.
-            return torch.load(cast(IO[bytes], file), map_location=torch.device("cpu"))
+            return torch.load(cast(IO[bytes], file), map_location=torch.device("cpu"), weights_only=False)
 
     def _load_model(self, checkpoint: Any) -> _IncompatibleKeys:
         """
